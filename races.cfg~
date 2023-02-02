@@ -1,0 +1,104 @@
+#textdomain wesnoth-Age_of_Machines
+    [race]
+        id=AoM_orc
+        male_name= _ "race^Orc"
+        female_name= _ "race+female^Orc"
+        plural_name= _ "race^Orcs"
+        description= _ ""
+        num_traits=3
+#        undead_variation=saurian
+        ignore_global_traits=no
+        {TRAIT_HEALTHY}
+#        male_names= _ "Amail,Axmail,Amprixta,Anexiraha,Anitratta,Arix,Blanaloss,Bloidatta,Gaxmoloss,Griaha,Flixta,Frikes,Hailoss,Hainoss,Harxoha,Huzel,Inaloss,Inexloss,Irixloss,Klezeloss,Kraska,Krezka,Kzapka,Lamailoss,Lexpeka,Maidatta,Malinoha,Nildloss,Pseloss,Psonka,Sekoloss,Siloss,Skell,Skepha,Slell,Snoloss,Soill,Sorkol,Srell,Trixoka,Turada,Vilail,Vlanis,Xabraka,Xamalel,Xinaha,Xnamoha,Zalha,Zleka,Zpseka,Zseka"
+    [/race]
+ 
+    [movetype]
+        name=tank
+        [movement_costs]
+            deep_water=2
+            shallow_water=2
+            reef=2
+            swamp_water=2
+            flat=1
+            sand=1
+            forest=2
+            hills=2
+            mountains=99
+            village=1
+            castle=1
+            cave=99
+            frozen=1
+            fungus=2
+        [/movement_costs]
+
+        [defense]
+            deep_water=90
+            shallow_water=90
+            reef=90
+            swamp_water=90
+            flat=80
+            sand=80
+            forest=70
+            hills=70
+            mountains=100
+            village=70
+            castle=70
+            cave=100
+            frozen=90
+            fungus=80
+        [/defense]
+
+        [resistance]
+            blade=40
+            pierce=40
+            impact=70
+            fire=110
+            cold=40
+            arcane=100
+        [/resistance]
+    [/movetype]
+    [movetype]
+        name=bike
+        [movement_costs]
+            deep_water=99
+            shallow_water=4
+            reef=2
+            swamp_water=3
+            flat=1
+            sand=1
+            forest=2
+            hills=2
+            mountains=3
+            village=1
+            castle=1
+            cave=3
+            frozen=1
+            fungus=2
+        [/movement_costs]
+
+        [defense]
+            deep_water=100
+            shallow_water=90
+            reef=70
+            swamp_water=70
+            flat=50
+            sand=60
+            forest=60
+            hills=50
+            mountains=70
+            village=50
+            castle=50
+            cave=100
+            frozen=70
+            fungus=60
+        [/defense]
+
+        [resistance]
+            blade=80
+            pierce=80
+            impact=90
+            fire=100
+            cold=100
+            arcane=100
+        [/resistance]
+    [/movetype]

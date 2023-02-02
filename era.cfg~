@@ -1,0 +1,20 @@
+#textdomain wesnoth-multiplayer
+
+[era]
+    id=Age_of_Machines
+    name= _ "Age of Machines - WIP era"
+    description=_"This era's goal It is planned to transfer the world of Wesnoth into the distant future. It will have factions of all Wesnoth races.
+
+Each faction in the era will have it's own race-specific ability and a super weapon. For example, orcs (or as they are formally called 'Demolishers') will have the 'Bloodthirst' race ability, and their super weapon shall be called 'lead rain'  
+
+Bloodthirst - every next successful melee hit by an orc deals 1+(insert unit level here) more damage than the previous one. like 'growing fury' from Era of Magic.
+
+The orcish super-weapon - Lead rain. It allows to bombard an area,
+destroying anyone in a 3-tile radius.  
+
+    
+    Includes Demolishers, C.K.A. (Cosmic Knights Alliance)"
+    require_era=yes
+    {RANDOM_SIDE}
+    {~add-ons/Age_of_Machines/factions/demolishers.cfg}
+[/era]

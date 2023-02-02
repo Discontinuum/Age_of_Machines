@@ -1,0 +1,14 @@
+#textdomain wesnoth-multiplayer
+[multiplayer_side]
+    id=Demolishers
+    name= _"Demolishers"
+    image="units/orcs/red_warrior.png"
+    {MAGENTA_IS_THE_TEAM_COLOR}
+    type=random
+    leader=Orcish Red Warrior,Orcish Gunner,Orcish Battle Chemist,Orcish Ravager
+    recruit=Orcish Stormtrooper,Goblin Technician,Orcish Tank,Orcish Raider,Orcish Chemist,Orcish Copter,Orcish Biker
+    terrain_liked=Hh, Ha, Mm, Ss
+    [ai]
+        recruitment_pattern=fighter,fighter,scout,mixed fighter,mixed fighter,tank
+    [/ai]
+[/multiplayer_side]

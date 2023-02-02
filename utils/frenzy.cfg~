@@ -1,0 +1,148 @@
+#textdomain wesnoth-units
+#define WEAPON_SPECIAL_BERSERK_TEMP
+    # Canned definition of the Berserk ability to be included in a
+    # [specials] clause.
+    [berserk]
+        id=berserk_temp
+        name= _ "temporary berserk"
+        description= _ "Whether used offensively or defensively, this attack presses the engagement until one of the combatants is slain, or 5 rounds of attacks have occurred."
+        value=5
+    [/berserk]
+#enddef
+#define WEAPON_SPECIAL_FRENZY
+    [damage]
+        id=frenzy
+        name= _ "frenzy"
+#        name= _ "growing fury"
+#        name_inactive= _ "growing fury"
+        description="There is a 20% chance that this will start berserking whenever it makes a melee attack. The effects of this will last until the start of this unit's subsequent turn. the berserk gained by this special only lasts 5 rounds."
+#        description="When this attack is used, this units damage increases after each successful hit (+1+<unit level>)."
+#        description_inactive="When this attack is used, this units damage increases after each successful hit (+1+<unit level>)."
+    [/damage]
+[/specials]
+[/attack]
+[event]
+name=attack
+first_time_only=no
+        [filter_attack]
+           special=frenzy
+		range=melee
+	[/filter_attack]
+        [filter_second_attack]
+                special=frenzy
+		range=melee
+	[/filter_second_attack]
+	{RANDOM 1..5} 
+	[if]
+		{BOB_CONDITION random numerical_equals 5}
+		[then]
+[object]
+	silent=yes
+	duration=turn
+	[filter]
+		x=$x1
+		y=$y1
+                side=$side_number
+        [/filter]
+	[effect]
+		apply_to=attack
+		range=melee
+		[set_specials]
+			mode=append
+			{WEAPON_SPECIAL_BERSERK_TEMP}
+		[/set_specials]
+	[/effect]
+[/object]
+#			{BOB_ADD_WEAPON_SPECIAL melee ($unit.melee_weapon) BERSERK_TEMP}
+			{BOB_SOUND dwarf-laugh.wav}
+			{BOB_FLOATING_LABEL id=$unit.id id=$unit.id "berserk" {COLOR_HARM}}
+		[/then]
+	[/if]
+	{CLEAR_VARIABLE random}
+[/event]
+[event]
+name=attack
+first_time_only=no
+        [filter_attack]
+           special=frenzy
+		range=melee
+	[/filter_attack]
+        [filter_second_attack]
+             [not]
+                special=frenzy
+		range=melee
+             [/not]
+	[/filter_second_attack]
+	{RANDOM 1..5} 
+	[if]
+		{BOB_CONDITION random numerical_equals 5}
+		[then]
+[object]
+	silent=yes
+	duration=turn
+	[filter]
+		x=$x1
+		y=$y1
+                side=$side_number
+        [/filter]
+	[effect]
+		apply_to=attack
+		range=melee
+		[set_specials]
+			mode=append
+			{WEAPON_SPECIAL_BERSERK_TEMP}
+		[/set_specials]
+	[/effect]
+[/object]
+#			{BOB_ADD_WEAPON_SPECIAL melee ($unit.melee_weapon) BERSERK_TEMP}
+			{BOB_SOUND dwarf-laugh.wav}
+			{BOB_FLOATING_LABEL id=$unit.id id=$unit.id "berserk" {COLOR_HARM}}
+		[/then]
+	[/if]
+	{CLEAR_VARIABLE random}
+[/event]
+[event]
+name=attack
+first_time_only=no
+        [filter_attack]
+             [not]
+           special=frenzy
+		range=melee
+             [/not]
+	[/filter_attack]
+        [filter_second_attack]
+                special=frenzy
+		range=melee
+	[/filter_second_attack]
+	{RANDOM 1..5} 
+	[if]
+		{BOB_CONDITION random numerical_equals 5}
+		[then]
+[object]
+	silent=yes
+	duration=turn
+	[filter]
+		x=$x2
+		y=$y2
+        [/filter]
+	[effect]
+		apply_to=attack
+		range=melee
+		[set_specials]
+			mode=append
+			{WEAPON_SPECIAL_BERSERK_TEMP}
+		[/set_specials]
+	[/effect]
+[/object]
+#			{BOB_ADD_WEAPON_SPECIAL melee ($unit.melee_weapon) BERSERK_TEMP}
+			{BOB_SOUND dwarf-laugh.wav}
+			{BOB_FLOATING_LABEL id=$second_unit.id id=$second_unit.id "berserk" {COLOR_HARM}}
+		[/then]
+	[/if]
+	{CLEAR_VARIABLE random}
+[/event]
+[+attack]
+[+specials]
+# wmlxgettext: [/specials]
+# wmlxgettext: [/attack]
+#enddef
