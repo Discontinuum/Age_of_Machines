@@ -23,15 +23,17 @@ function wesnoth.interface.game_display.metal()
 	local viewing_side = wesnoth.interface.get_viewing_side()
 
 	local side_proxy = wesnoth.sides[viewing_side]
-	local mtl = side_proxy["variables"]["metal_reserve"] or 0
-	local str = mtl .. " (+" .. production (viewing_side, "metal") .. ")"
+	local val = side_proxy["variables"]["metal_reserve"] or 0
+	local prod = production (viewing_side, "metal")
+	local str = val .. " (+" .. prod .. ")"
 	--if (viewing_side ~= wesnoth.current.side) then
 	--	str = "<span color='" .. colors.gray .. "'>" .. str .. "</span>"
 	--end
 
 	return { { 'element', {
 		text = str,
-		tooltip = "The side's metal reserve"
+		tooltip = "Metal: "..val.."\nMetal production: +" .. prod .. "\nMetal is needed for units' ranged attacks. To get more metal, capture metal factories"
+
 	} } }
 
 end
@@ -40,15 +42,13 @@ function wesnoth.interface.game_display.coal()
 	-- Display for the viewing side, not the current side
 	local viewing_side = wesnoth.interface.get_viewing_side()
 
-	local mtl = wml["variables"]["coal_reserve" .. viewing_side] or 0
-	local str = mtl .. " (+" .. production (viewing_side, "coal") .. ")"
-	--if (viewing_side ~= wesnoth.current.side) then
-	--	str = "<span color='" .. colors.gray .. "'>" .. str .. "</span>"
-	--end
+	local val = wml["variables"]["coal_reserve" .. viewing_side] or 0
+	local prod = production (viewing_side, "coal")
+	local str = val .. " (+" .. prod .. ")"
 
 	return { { 'element', {
 		text = str,
-		tooltip = "The side's coal reserve"
+		tooltip = "Coal: "..val.."\nCoal production: +" .. prod .. "\nCoal is needed for machines to be able to move. To get more coal, capture coal factories"
 	} } }
 
 end
