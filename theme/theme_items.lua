@@ -35,7 +35,7 @@ function wesnoth.interface.game_display.coal()
 
 	return { { 'element', {
 		text = str,
-		tooltip = "The side's metal reserve"
+		tooltip = "The side's coal reserve"
 	} } }
 
 end
