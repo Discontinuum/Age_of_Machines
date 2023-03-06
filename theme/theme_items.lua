@@ -32,7 +32,7 @@ function wesnoth.interface.game_display.metal()
 
 	return { { 'element', {
 		text = str,
-		tooltip = "Metal: "..val.."\nMetal production: +" .. prod .. "\nMetal is needed for units' ranged attacks. To get more metal, capture metal factories"
+		tooltip = "Metal: "..val.."\nMetal production: +" .. prod .. "\nMetal is needed for most of attacks. To get more metal, capture metal factories"
 
 	} } }
 
