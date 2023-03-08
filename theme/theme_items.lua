@@ -18,6 +18,27 @@ local function production(side, resource)
 	return prod
 end
 
+function wesnoth.interface.game_display.goldincome()
+	-- Display for the viewing side, not the current side
+	local viewing_side = wesnoth.interface.get_viewing_side()
+
+	local side_proxy = wesnoth.sides[viewing_side]
+	local val = side_proxy.gold or 0
+	local income = side_proxy.net_income or 0
+	local sign = "+"
+	if income < 0 then
+		sign = ""
+	end
+	local str = val .. " (" .. sign .. income .. ")"
+
+	return { { 'element', {
+		text = str,
+		tooltip = "<b>Gold</b>: "..val.."\n<b>Income</b>: ".. sign .. income .. "\nWith gold you buy new units and pay upkeep for units on the board. To increase your income, capture villages."
+
+	} } }
+
+end
+
 function wesnoth.interface.game_display.metal()
 	-- Display for the viewing side, not the current side
 	local viewing_side = wesnoth.interface.get_viewing_side()
@@ -32,7 +53,7 @@ function wesnoth.interface.game_display.metal()
 
 	return { { 'element', {
 		text = str,
-		tooltip = "Metal: "..val.."\nMetal production: +" .. prod .. "\nMetal is needed for most of attacks. To get more metal, capture metal factories"
+		tooltip = "<b>Metal</b>: "..val.."\n<b>Metal production</b>: +" .. prod .. "\nMetal is needed for most of attacks. To get more metal, capture metal factories"
 
 	} } }
 
@@ -48,7 +69,7 @@ function wesnoth.interface.game_display.coal()
 
 	return { { 'element', {
 		text = str,
-		tooltip = "Coal: "..val.."\nCoal production: +" .. prod .. "\nCoal is needed for machines to be able to move. To get more coal, capture coal factories"
+		tooltip = "<b>Coal</b>: "..val.."\n<b>Coal production</b>: +" .. prod .. "\nCoal is needed for machines to be able to move. To get more coal, capture coal factories"
 	} } }
 
 end
