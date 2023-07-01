@@ -18,7 +18,7 @@ local function production(side, resource)
 	return prod
 end
 
-function wesnoth.interface.game_display.goldincome()
+function wesnoth.interface.game_display.gold()
 	-- Display for the viewing side, not the current side
 	local viewing_side = wesnoth.interface.get_viewing_side()
 
@@ -39,7 +39,7 @@ function wesnoth.interface.game_display.goldincome()
 
 end
 
-function wesnoth.interface.game_display.metal()
+function wesnoth.interface.game_display.income()
 	-- Display for the viewing side, not the current side
 	local viewing_side = wesnoth.interface.get_viewing_side()
 
@@ -59,7 +59,7 @@ function wesnoth.interface.game_display.metal()
 
 end
 
-function wesnoth.interface.game_display.coal()
+function wesnoth.interface.game_display.expenses()
 	-- Display for the viewing side, not the current side
 	local viewing_side = wesnoth.interface.get_viewing_side()
 
