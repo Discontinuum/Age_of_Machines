@@ -63,7 +63,8 @@ function wesnoth.interface.game_display.expenses()
 	-- Display for the viewing side, not the current side
 	local viewing_side = wesnoth.interface.get_viewing_side()
 
-	local val = wml["variables"]["coal_reserve" .. viewing_side] or 0
+	local side_proxy = wesnoth.sides[viewing_side]
+	local val = side_proxy["variables"]["coal_reserve"] or 0
 	local prod = production (viewing_side, "coal")
 	local str = val .. " (+" .. prod .. ")"
 
