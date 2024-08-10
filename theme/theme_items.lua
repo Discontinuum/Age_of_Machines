@@ -44,8 +44,8 @@ function wesnoth.interface.game_display.income()
 	local viewing_side = wesnoth.interface.get_viewing_side()
 
 	local side_proxy = wesnoth.sides[viewing_side]
-	local val = side_proxy["variables"]["metal_reserve"] or 0
-	local prod = production (viewing_side, "metal")
+	local val = side_proxy["variables"]["economy"] or 0
+	local prod = production (viewing_side, "economy")
 	local str = val .. " (+" .. prod .. ")"
 	--if (viewing_side ~= wesnoth.current.side) then
 	--	str = "<span color='" .. colors.gray .. "'>" .. str .. "</span>"
@@ -53,7 +53,7 @@ function wesnoth.interface.game_display.income()
 
 	return { { 'element', {
 		text = str,
-		tooltip = "<b>Metal</b>: "..val.."\n<b>Metal production</b>: +" .. prod .. "\nMetal is needed for most of attacks. To get more metal, capture metal factories"
+		tooltip = "<b>economy</b>: "..val.."\n<b>economy production</b>: +" .. prod .. "\neconomy is needed for most of attacks. To get more economy, capture economy factories"
 
 	} } }
 
